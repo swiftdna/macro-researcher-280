@@ -1,0 +1,165 @@
+import "../CSS/landing.css"
+import React, { useEffect, useState } from 'react';
+import Navbar from './Navbar';
+import axios from 'axios';
+import { pluck } from 'underscore';
+import {   Routes, Route, NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { clearRedirectionPath } from '../actions/app-actions'
+import { RiSettingsLine, RiListUnordered } from 'react-icons/ri';
+import { TbReportAnalytics } from 'react-icons/tb';
+import { FaUser } from 'react-icons/fa';
+import {BiUserCircle} from 'react-icons/bi';
+import { GrContact } from 'react-icons/gr';
+import { GiDeliveryDrone } from 'react-icons/gi';
+import MyBookings from './MyBookings';
+import { Row, Col, Form } from 'react-bootstrap';
+import { TbDrone } from 'react-icons/tb';
+import { Link } from 'react-router-dom';
+import {Tree} from 'react-arborist';
+
+function Node({ node, style, dragHandle }) {
+  /* This node instance can do many things. See the API reference. */
+  return (
+    <div style={{...style, textAlign: 'left'}} ref={dragHandle} onClick={() => node.toggle()}>
+      {node.isLeaf ? "- " : (node.isOpen ? "▼ " : "➤ ") }
+      {node.data.name}
+    </div>
+  );
+}
+
+//create the Navbar Component
+function LandingPage() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const userLandedPage = useLocation();
+ 
+    useEffect(() => {
+    }, []);
+
+    const home = () => {
+        navigate('/');
+    }
+
+    const navMapping = {
+        'm1': 'macro-gdp',
+        'm2': 'macro-fdi-inflow',
+        'm3': 'macro-fdi-outflow',
+        'a1': 'agri-gdp',
+        'a2': 'agri-credit',
+        'a3': 'agri-fertilizers',
+        'a4': 'agri-fertilizers-prod',
+        'd1': 'debt-reserves',
+        'd2': 'debt-gni',
+        'd3': 'debt-total-debt',
+        '4': 'crops',
+        '5': 'imports',
+        '6': 'yield',
+    };
+
+    const data = [
+      { id: "1", name: "Macroeconomic (USD)" ,
+        children: [
+            { id: "m1", name: "GDP(USD)" },
+            { id: "m2", name: "FDI Inflow(USD)" },
+            { id: "m3", name: "FDI Outflows(USD)" },
+        ] 
+      },
+      { id: "2", name: "Agriculture",
+        children: [
+            { id: "a1", name: "Contribution of Agri(% GDP )" },
+            { id: "a2", name: "Credit" },
+            { id: "a3", name: "Fertilizers" },
+            { id: "a4", name: "Fertilizers PROD" },
+        ]  },
+      {
+        id: "3",
+        name: "Debt Services",
+        children: [
+          { id: "d1", name: "Reserves" },
+          { id: "d2", name: "GNI" },
+          { id: "d3", name: "Total Debt(%)" },
+        ],
+      },
+      {
+        id: "4",
+        name: "Crops"
+      },
+      {
+        id: "5",
+        name: "Imports"
+      },
+      {
+        id: "6",
+        name: "Yield"
+      },
+    ];
+
+    const clicked =  (e) => {
+        console.log('click', e);
+    }
+
+    const onMove = ({ dragIds, parentId, index }) => {
+        // console.log(dragIds, parentId, index);
+        const [id] = dragIds;
+        console.log(id, navMapping[id]);
+        if (navMapping[id]) {
+            navigate(`/view/${navMapping[id]}`);
+        }
+    };
+
+    return(
+        <div className="container main-frame fill-page">
+            <Row style={{width: '100%'}}>
+                <Col xs={3} className="text-center py-3 dc-default dc-leftpane">
+                    <h3 className="title"><RiSettingsLine size={40} style={{marginTop: '-5px'}} /> Dashboard</h3>
+                    {
+                        <Tree data={data}
+                          openByDefault={true}
+                          width={300}
+                          height={1000}
+                          indent={24}
+                          rowHeight={36}
+                          overscanCount={1}
+                          paddingTop={30}
+                          paddingBottom={10}
+                          padding={25 /* sets both */}
+                          onMove={onMove}
+                          onClick={(e) => clicked(e)}
+                        >
+                            {Node}
+                        </Tree>
+                    }
+                    {
+                        <ul className="nav flex-column dc-default dc-admin-nav">
+                          <li className="nav-item">
+                            <NavLink className="nav-link" activeClassName="active" to="/"><RiListUnordered style={{marginTop: '-2px'}} /> My Bookings</NavLink>
+                          </li>
+                          <li className="nav-item">
+                            <NavLink className="nav-link" activeClassName="active" to="/book-drone"><GiDeliveryDrone size={20} style={{marginTop: '-2px'}} /> Book Drone</NavLink>
+                          </li>
+                          <li className="nav-item">
+                            <NavLink className="nav-link" activeClassName="active" to="/service-reports"><TbReportAnalytics size={20} style={{marginTop: '-5px'}} /> Service Reports</NavLink>
+                          </li>
+                          <li className="nav-item">
+                            <NavLink className="nav-link" activeClassName="active" to="/profile"><BiUserCircle style={{marginTop: '-3px'}}  /> Profile</NavLink>
+                          </li>
+                          <li className="nav-item">
+                            <NavLink className="nav-link" activeClassName="active" to="/contact"><GrContact size={18} style={{marginTop: '-3px'}}  /> Contact</NavLink>
+                          </li>
+                        </ul>
+                    }
+                </Col>
+                <Col xs={9} className="text-center py-3 dc-default content_panel">
+                    <Routes>
+                        <Route path="view">
+                            <Route path=":pageID" element={<MyBookings />} />
+                        </Route>
+                    </Routes>
+                </Col>
+            </Row>
+        </div>
+    )
+}
+
+export default LandingPage;
