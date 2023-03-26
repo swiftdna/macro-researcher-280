@@ -16,6 +16,7 @@ import MyBookings from './MyBookings';
 import YieldWalnuts from './YieldWalnuts';
 import YieldMangos from './YieldMangos';
 import CropMangos from "./CropMangos";
+import TimeSeries from './TimeSeries';
 import { Row, Col, Form } from 'react-bootstrap';
 import { TbDrone } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
@@ -61,6 +62,7 @@ function LandingPage() {
         'y1': 'yield/walnuts',
         'y2': 'yieldm/mangos',
         '6': 'imports',
+        '7': 'timeseries/sensors',
     };
 
     const data = [
@@ -108,6 +110,10 @@ function LandingPage() {
         id: "6",
         name: "Imports"
       },
+      {
+        id: "7",
+        name: "Sensors"
+      }
     ];
 
     const clicked =  (e) => {
@@ -149,6 +155,7 @@ function LandingPage() {
                 <Col xs={9} className="text-center py-3 dc-default content_panel">
                     <Routes>
                         <Route path="view">
+                            <Route path="timeseries/:pageID" element={<TimeSeries />} />
                             <Route path="yield/:pageID" element={<YieldWalnuts />} />
                             <Route path="yieldm/:pageID" element={<YieldMangos />} />
                             <Route path="crop/:pageID" element={<CropMangos />} />
