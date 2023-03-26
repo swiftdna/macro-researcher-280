@@ -67,7 +67,7 @@ function LandingPage() {
       },
       { id: "2", name: "Agriculture",
         children: [
-            { id: "a1", name: "Contribution of Agri(% GDP )" },
+            { id: "a1", name: "Contribution of Agri(% GDP)" },
             { id: "a2", name: "Credit" },
             { id: "a3", name: "Fertilizers" },
             { id: "a4", name: "Fertilizers PROD" },
@@ -112,7 +112,7 @@ function LandingPage() {
         <div className="container main-frame fill-page">
             <Row style={{width: '100%'}}>
                 <Col xs={3} className="text-center py-3 dc-default dc-leftpane">
-                    <h3 className="title"><RiSettingsLine size={40} style={{marginTop: '-5px'}} /> Dashboard</h3>
+                    {/*<h3 className="title"><RiSettingsLine size={40} style={{marginTop: '-5px'}} /> Dashboard</h3> */}
                     {
                         <Tree data={data}
                           openByDefault={true}
