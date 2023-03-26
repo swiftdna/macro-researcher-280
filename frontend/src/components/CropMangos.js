@@ -85,13 +85,8 @@ export default App;
 // import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 // const containerStyle = {
-<<<<<<< HEAD
-//   width: '100vw',
-//   height: '100vh'
-=======
 //   width: '50vw',
 //   height: 'y0vh'
->>>>>>> 1e9ff9d ( added crops)
 // };
 
 // const center = {
@@ -100,11 +95,6 @@ export default App;
 // };
 
 // const locations = [
-<<<<<<< HEAD
-
-// ];
-
-=======
 //   // your 40 locations array from the previous example
 // ];
 
@@ -146,7 +136,6 @@ export default App;
 //   );
 // };
 
->>>>>>> 1e9ff9d ( added crops)
 // function App() {
 //   const [animatedLocations, setAnimatedLocations] = useState([]);
 
