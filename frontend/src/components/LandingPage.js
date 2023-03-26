@@ -15,6 +15,7 @@ import { GiDeliveryDrone } from 'react-icons/gi';
 import MyBookings from './MyBookings';
 import YieldWalnuts from './YieldWalnuts';
 import YieldMangos from './YieldMangos';
+import CropMangos from "./CropMangos";
 import { Row, Col, Form } from 'react-bootstrap';
 import { TbDrone } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
@@ -54,7 +55,9 @@ function LandingPage() {
         'd1': 'debt-reserves',
         'd2': 'debt-gni',
         'd3': 'debt-total-debt',
-        '4': 'crops',
+        'c1': 'crops/bananas',
+        'c2': 'crops/mangos',
+        'c3': 'crops/walnuts',
         'y1': 'yield/walnuts',
         'y2': 'yieldm/mangos',
         '6': 'imports',
@@ -86,7 +89,12 @@ function LandingPage() {
       },
       {
         id: "4",
-        name: "Crops"
+        name: "Crops",
+        children: [
+          { id: "c1", name: "bananas" },
+          { id: "c2", name: "mangos" },
+          { id: "c3", name: "walnuts" },
+        ],
       },
       {
         id: "5",
@@ -143,7 +151,7 @@ function LandingPage() {
                         <Route path="view">
                             <Route path="yield/:pageID" element={<YieldWalnuts />} />
                             <Route path="yieldm/:pageID" element={<YieldMangos />} />
-                            <Route path=":pageID" element={<MyBookings />} />
+                            <Route path="crop/:pageID" element={<CropMangos />} />
                         </Route>
                     </Routes>
                 </Col>
