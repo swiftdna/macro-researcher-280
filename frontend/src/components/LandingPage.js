@@ -17,6 +17,7 @@ import YieldWalnuts from './YieldWalnuts';
 import YieldMangos from './YieldMangos';
 import CropMangos from "./CropMangos";
 import TimeSeries from './TimeSeries';
+import ImportWheat from './ImportWheat';
 import { Row, Col, Form } from 'react-bootstrap';
 import { TbDrone } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
@@ -158,6 +159,7 @@ function LandingPage() {
                             <Route path="yield/:pageID" element={<YieldWalnuts />} />
                             <Route path="yieldm/:pageID" element={<YieldMangos />} />
                             <Route path="crop/:pageID" element={<CropMangos />} />
+                            <Route path="imports" element={<ImportWheat />} />
                             <Route path=":pageID" element={<MyBookings />} />
                         </Route>
                     </Routes>
