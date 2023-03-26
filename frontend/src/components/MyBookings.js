@@ -78,6 +78,9 @@ function MyBookings() {
         if (country) {
             tmp_data = master_data[src_name][country];
         }
+        if (!tmp_data) {
+            return;
+        }
         if (start && end) {
             filtered_data = tmp_data.filter(td => {
                 const [yr] = td;

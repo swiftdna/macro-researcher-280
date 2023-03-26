@@ -90,8 +90,6 @@ function Yield() {
         if (filtered_data2.length) {
             setData2(filtered_data2);
         }
-        console.log('filtered_data1 -> ', filtered_data1);
-        console.log('filtered_data2 -> ', filtered_data2);
     }, [range]);
     
     const getCountryName = (code) => {
