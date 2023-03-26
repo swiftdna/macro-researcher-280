@@ -14,6 +14,8 @@ import agri_fert from '../data/agri_fert_fmtd.json';
 import agri_fert_prod from '../data/agri_fert_prod_fmtd.json';
 import gdp_growth from '../data/gdp_growth_fmtd.json';
 import countries from '../data/countries.json';
+import fdi_netinflow from '../data/fdi_netinflow.json';
+
 import RangeSlider from 'rsuite/RangeSlider';
 import 'rsuite/dist/rsuite.min.css'; // or 'rsuite/dist/rsuite.min.css'
 
@@ -27,6 +29,7 @@ function MyBookings() {
     const [range, setRange] = useState([1960, 2021]);
     let { pageID } = useParams();
     const master_data = {
+        fdi_netinflow,
         gdp_growth,
         dbt_rsv,
         dbt_gni,
@@ -36,6 +39,7 @@ function MyBookings() {
         agri_fert_prod
     };
     const pgmapping = {
+        'macro-fdi-inflow' : 'fdi_netinflow', //BX.KLT.DINV.WD.GD.ZS
         'macro-gdp': 'gdp_growth', // NY.GDP.MKTP.KD.ZG
         'debt-reserves': 'dbt_rsv', //FI.RES.TOTL.DT.ZS
         'debt-gni': 'debt_gni', // DT.TDS.DECT.GN.ZS
@@ -123,7 +127,7 @@ function MyBookings() {
             
             {country && range.length ? <p style={{marginTop: '50px'}}>Showing {pageIdentifier} data for {getCountryName(country)}. Year range - {range.join(' to ')}</p> : <p>Welcome to {pageID}. Please select a country and year range.</p>}
             {country && range.length ? <Chart
-              chartType="LineChart"
+              chartType="LineChart" 
               data={data}
               width="100%"
               height="400px"
