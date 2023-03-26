@@ -13,6 +13,7 @@ import {BiUserCircle} from 'react-icons/bi';
 import { GrContact } from 'react-icons/gr';
 import { GiDeliveryDrone } from 'react-icons/gi';
 import MyBookings from './MyBookings';
+import Yield from './Yield';
 import { Row, Col, Form } from 'react-bootstrap';
 import { TbDrone } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
@@ -53,8 +54,9 @@ function LandingPage() {
         'd2': 'debt-gni',
         'd3': 'debt-total-debt',
         '4': 'crops',
-        '5': 'imports',
-        '6': 'yield',
+        'y1': 'yield/walnuts',
+        'y2': 'mangos',
+        '6': 'imports',
     };
 
     const data = [
@@ -87,11 +89,15 @@ function LandingPage() {
       },
       {
         id: "5",
-        name: "Imports"
+        name: "Yield",
+        children: [
+          { id: "y1", name: "Walnuts" },
+          { id: "y2", name: "Mangos" },
+        ],
       },
       {
         id: "6",
-        name: "Yield"
+        name: "Imports"
       },
     ];
 
@@ -153,6 +159,7 @@ function LandingPage() {
                 <Col xs={9} className="text-center py-3 dc-default content_panel">
                     <Routes>
                         <Route path="view">
+                            <Route path="yield/:pageID" element={<Yield />} />
                             <Route path=":pageID" element={<MyBookings />} />
                         </Route>
                     </Routes>
