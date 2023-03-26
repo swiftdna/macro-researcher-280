@@ -8,6 +8,8 @@ import moment from 'moment';
 import { Chart } from "react-google-charts";
 import dbt_rsv from '../data/dbt_reserves_fmtd.json';
 import countries from '../data/countries.json';
+import RangeSlider from 'rsuite/RangeSlider';
+import 'rsuite/dist/rsuite.min.css'; // or 'rsuite/dist/rsuite.min.css'
 
 function MyBookings() {
     const dispatch = useDispatch();
@@ -17,6 +19,7 @@ function MyBookings() {
     const [loading, setLoading] = useState(false);
     const [country, setCountry] = useState("");
     const [data, setData] = useState([]);
+    const [range, setRange] = useState([]);
     let { pageID } = useParams();
     const user_id = useSelector((store) => store.app.user.id);
     const username = useSelector((store) =>store.app.user.name);
@@ -29,8 +32,31 @@ function MyBookings() {
     }, []);
 
     useEffect(() => {
-        setData(debt_reserves[country]);
-    }, [country])
+        const [start, end] = range;
+        let tmp_data = [];
+        let filtered_data = [];
+        if (country) {
+            tmp_data = debt_reserves[country];
+        }
+        if (start && end) {
+            filtered_data = tmp_data.filter(td => {
+                const [yr] = td;
+                console.log(td);
+                if (typeof yr === 'string') {
+                    console.log('str ', yr);
+                    return true;
+                }
+                if (typeof yr === 'number' && (yr >= start && yr <= end)) {
+                    console.log('number ', yr);
+                    return true;
+                }
+                return false;
+            });
+        }
+        if (filtered_data.length) {
+            setData(filtered_data);
+        }
+    }, [country, range]);
 
     const getBookingsData = () => {
         setLoading(true);
@@ -58,10 +84,17 @@ function MyBookings() {
         return ctyArr.length ? ctyArr[0].name : '';
     }
 
+    const sliderChanged = (val) => {
+        setRange(val);
+        // const [start, end] = val;
+        // console.log(start, end);
+    }
+
     return(
         <div>
             <Row>
                 <Col md="9">
+                    <RangeSlider min={1960} max={2021} defaultValue={[1960, 2021]} onChange={sliderChanged} style={{marginTop: '15px'}} />
                 </Col>
                 <Col md="3">
                     <Form.Select aria-label="Default select example" onChange={(e) => setCountry(e.target.value)}>
