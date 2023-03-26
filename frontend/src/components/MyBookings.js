@@ -8,6 +8,7 @@ import moment from 'moment';
 import { Chart } from "react-google-charts";
 import dbt_rsv from '../data/dbt_reserves_fmtd.json';
 import dbt_gni from '../data/dbt_gni_fmtd.json';
+import dbt_total from '../data/dbt_total_fmtd.json';
 import countries from '../data/countries.json';
 import RangeSlider from 'rsuite/RangeSlider';
 import 'rsuite/dist/rsuite.min.css'; // or 'rsuite/dist/rsuite.min.css'
@@ -23,11 +24,13 @@ function MyBookings() {
     let { pageID } = useParams();
     const master_data = {
         debt_reserves: dbt_rsv,
-        debt_gni: dbt_gni
+        debt_gni: dbt_gni,
+        debt_total: dbt_total
     };
     const pgmapping = {
-        'debt-reserves': 'debt_reserves',
-        'debt-gni': 'debt_gni'
+        'debt-reserves': 'debt_reserves', //FI.RES.TOTL.DT.ZS
+        'debt-gni': 'debt_gni', // DT.TDS.DECT.GN.ZS
+        'debt-total-debt': 'debt_total', // DT.TDS.DECT.GN.ZS
     };
 
     const reset = () => {
@@ -49,7 +52,9 @@ function MyBookings() {
         let src_name = pgmapping[pageIdentifier];
         let tmp_data = [];
         let filtered_data = [];
-        console.log('src_name -> ', src_name, master_data[src_name]);
+        if (!src_name) {
+            return;
+        }
         if (country) {
             tmp_data = master_data[src_name][country];
         }
