@@ -85,8 +85,13 @@ export default App;
 // import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 // const containerStyle = {
+<<<<<<< HEAD
 //   width: '100vw',
 //   height: '100vh'
+=======
+//   width: '50vw',
+//   height: 'y0vh'
+>>>>>>> 1e9ff9d ( added crops)
 // };
 
 // const center = {
@@ -95,9 +100,53 @@ export default App;
 // };
 
 // const locations = [
+<<<<<<< HEAD
 
 // ];
 
+=======
+//   // your 40 locations array from the previous example
+// ];
+
+// const FallingMarker = ({ location }) => {
+//   const initialPosition = {
+//     lat: location.lat - 10,
+//     lng: location.lng
+//   };
+//   const [position, setPosition] = useState(initialPosition);
+
+//   useEffect(() => {
+//     const animationDuration = 1000; // duration in milliseconds
+//     const startTime = performance.now();
+
+//     const animateMarker = (timestamp) => {
+//       const elapsedTime = timestamp - startTime;
+//       const progress = Math.min(elapsedTime / animationDuration, 1);
+
+//       const newPosition = {
+//         lat: initialPosition.lat + (location.lat - initialPosition.lat) * progress,
+//         lng: location.lng
+//       };
+
+//       setPosition(newPosition);
+
+//       if (progress < 1) {
+//         requestAnimationFrame
+//         (animateMarker);
+//       }
+//     };
+
+//     requestAnimationFrame(animateMarker);
+//   }, [initialPosition, location]);
+
+//   return (
+//     <Marker
+//       position={position}
+//     />
+//   );
+// };
+
+>>>>>>> 1e9ff9d ( added crops)
 // function App() {
 //   const [animatedLocations, setAnimatedLocations] = useState([]);
 
