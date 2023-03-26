@@ -33,21 +33,7 @@ const locations = [
   { name: "Indonesia", lat: -6.208763, lng: 106.845599 },
   { name: "Ireland", lat: 53.349805, lng: -6.260310 },
   { name: "Israel", lat: 31.046051, lng: 34.851612 },
-  { name: "Italy", lat: 41.902782, lng: 12.496366},
-  { name: "Japan", lat: 35.689487, lng: 139.691706 },
-  { name: "Kenya", lat: -1.292066, lng: 36.821946 },
-  { name: "Mexico", lat: 19.432608, lng: -99.133208 },
-  { name: "Netherlands", lat: 52.370216, lng: 4.895168 },
-  { name: "New Zealand", lat: -41.286460, lng: 174.776236 },
-  { name: "Norway", lat: 59.913869, lng: 10.752245 },
-  { name: "Peru", lat: -12.046373, lng: -77.042754 },
-  { name: "Philippines", lat: 14.599512, lng: 120.984219 },
-  { name: "Poland", lat: 52.229676, lng: 21.012229 },
-  { name: "Portugal", lat: 38.722252, lng: -9.139337 },
-  { name: "Russia", lat: 55.755826, lng: 37.617300 },
-  { name: "South Africa", lat: -33.924869, lng: 18.424055 },
-  { name: "South Korea", lat: 37.566535, lng: 126.977969 },
-  { name: "Spain", lat: 40.416775, lng: -3.703790 },  
+ 
 ];
 
 function App() {

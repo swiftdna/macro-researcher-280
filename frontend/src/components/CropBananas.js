@@ -13,21 +13,7 @@ const center = {
 };
 
 const locations = [
-  { name: "Argentina", lat: -34.603722, lng: -58.381592 },
-  { name: "Australia", lat: -35.308236, lng: 149.124392 },
-  { name: "Austria", lat: 48.208353, lng: 16.372504 },
-  { name: "Belgium", lat: 50.846557, lng: 4.351697 },
-  { name: "Brazil", lat: -15.826691, lng: -47.921822 },
-  { name: "Canada", lat: 45.421530, lng: -75.697193 },
-  { name: "China", lat: 39.904200, lng: 116.407396 },
-  { name: "Czech Republic", lat: 50.087811, lng: 14.420460 },
-  { name: "Denmark", lat: 55.676098, lng: 12.568337 },
-  { name: "Egypt", lat: 30.044420, lng: 31.235712 },
-  { name: "Finland", lat: 60.169857, lng: 24.938379 },
-  { name: "France", lat: 48.856614, lng: 2.352222 },
-  { name: "Germany", lat: 52.520007, lng: 13.404954 },
-  { name: "Greece", lat: 37.983810, lng: 23.727539 },
-  { name: "Hungary", lat: 47.497912, lng: 19.040235 },
+  
   { name: "Iceland", lat: 64.126521, lng: -21.817439 },
   { name: "India", lat: 28.613939, lng: 77.209021 },
   { name: "Indonesia", lat: -6.208763, lng: 106.845599 },

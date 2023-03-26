@@ -16,6 +16,8 @@ import MyBookings from './MyBookings';
 import YieldWalnuts from './YieldWalnuts';
 import YieldMangos from './YieldMangos';
 import CropMangos from "./CropMangos";
+import CropBananas from "./CropBananas"
+import CropWalnuts from "./CropWalnuts"
 import TimeSeries from './TimeSeries';
 import ImportWheat from './ImportWheat';
 import AgriCredit from './AgriCredit';
@@ -157,9 +159,12 @@ function LandingPage() {
                     <Routes>
                         <Route path="view">
                             <Route path="timeseries/:pageID" element={<TimeSeries />} />
+                            <Route path="crops/mangos" element={<CropMangos />} />
+                            <Route path="crops/bananas" element={<CropBananas />} />
+                            <Route path="crops/walnuts" element={<CropWalnuts />} />
+                            {/* <Route path="crop/:pageID" element={<CropMangos />} /> */}
                             <Route path="yield/:pageID" element={<YieldWalnuts />} />
                             <Route path="yieldm/:pageID" element={<YieldMangos />} />
-                            <Route path="crop/:pageID" element={<CropMangos />} />
                             <Route path="bar/agri-credit" element={<AgriCredit />} />
                             <Route path="imports" element={<ImportWheat />} />
                             <Route path=":pageID" element={<MyBookings />} />
