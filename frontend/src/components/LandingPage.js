@@ -159,6 +159,7 @@ function LandingPage() {
                             <Route path="yield/:pageID" element={<YieldWalnuts />} />
                             <Route path="yieldm/:pageID" element={<YieldMangos />} />
                             <Route path="crop/:pageID" element={<CropMangos />} />
+                            <Route path=":pageID" element={<MyBookings />} />
                         </Route>
                     </Routes>
                 </Col>

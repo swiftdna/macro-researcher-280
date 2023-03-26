@@ -9,7 +9,7 @@ import sensor_data from '../data/sensor_data_fmtd.json';
 import RangeSlider from 'rsuite/RangeSlider';
 import 'rsuite/dist/rsuite.min.css'; // or 'rsuite/dist/rsuite.min.css'
 
-function Yield() {
+function TimeSeries() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const userLandedPage = useLocation();
@@ -93,4 +93,4 @@ function Yield() {
     )
 }
 
-export default Yield;
+export default TimeSeries;
