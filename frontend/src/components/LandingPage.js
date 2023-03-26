@@ -13,7 +13,8 @@ import {BiUserCircle} from 'react-icons/bi';
 import { GrContact } from 'react-icons/gr';
 import { GiDeliveryDrone } from 'react-icons/gi';
 import MyBookings from './MyBookings';
-import Yield from './Yield';
+import YieldWalnuts from './YieldWalnuts';
+import YieldMangos from './YieldMangos';
 import { Row, Col, Form } from 'react-bootstrap';
 import { TbDrone } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
@@ -55,7 +56,7 @@ function LandingPage() {
         'd3': 'debt-total-debt',
         '4': 'crops',
         'y1': 'yield/walnuts',
-        'y2': 'mangos',
+        'y2': 'yieldm/mangos',
         '6': 'imports',
     };
 
@@ -136,30 +137,12 @@ function LandingPage() {
                             {Node}
                         </Tree>
                     }
-                    {
-                        <ul className="nav flex-column dc-default dc-admin-nav">
-                          <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="active" to="/"><RiListUnordered style={{marginTop: '-2px'}} /> My Bookings</NavLink>
-                          </li>
-                          <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="active" to="/book-drone"><GiDeliveryDrone size={20} style={{marginTop: '-2px'}} /> Book Drone</NavLink>
-                          </li>
-                          <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="active" to="/service-reports"><TbReportAnalytics size={20} style={{marginTop: '-5px'}} /> Service Reports</NavLink>
-                          </li>
-                          <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="active" to="/profile"><BiUserCircle style={{marginTop: '-3px'}}  /> Profile</NavLink>
-                          </li>
-                          <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="active" to="/contact"><GrContact size={18} style={{marginTop: '-3px'}}  /> Contact</NavLink>
-                          </li>
-                        </ul>
-                    }
                 </Col>
                 <Col xs={9} className="text-center py-3 dc-default content_panel">
                     <Routes>
                         <Route path="view">
-                            <Route path="yield/:pageID" element={<Yield />} />
+                            <Route path="yield/:pageID" element={<YieldWalnuts />} />
+                            <Route path="yieldm/:pageID" element={<YieldMangos />} />
                             <Route path=":pageID" element={<MyBookings />} />
                         </Route>
                     </Routes>
