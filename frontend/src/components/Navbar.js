@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Badge } from 'react-bootstrap';
 import { TbDrone } from 'react-icons/tb';
 import { selectIsLoggedIn } from '../selectors/appSelector';
 import { handleLogoutResponse } from '../actions/app-actions';
@@ -54,16 +55,9 @@ function Navbar() {
                     <a className="navbar-brand" onClick={() => home()}>Dashboard</a>
                 </div>
                 <div className="col-6 text-center">
-                    {
-                        isAuthenticated && (
-                            <>
-                                {/* <FaList className="nav-buttons" title="Purchases" size="3em" onClick={() => purchases()}/> 
-                                    <FaUserAlt className="nav-buttons" title="Profile" size="3em" onClick={() => profile()}/> 
-                                    <button type="button" className={getActiveClass('/')} title="Home" onClick={() => home()}>Home</button>
-                                    <button type="button" className={getActiveClass('/contact')} title="Contact" onClick={() => contact()}>Contact</button>
-                                    <button type="button" className={getActiveClass('/profile')} title="Profile" onClick={() => profile()}>Profile</button>*/}
-                            </>)
-                    }
+                    <Badge bg="success">
+                        Connected
+                    </Badge>
                 </div>
                 <div className="col-3 right-contents">
                     {
