@@ -11,6 +11,7 @@ import dbt_gni from '../data/dbt_gni_fmtd.json';
 import dbt_total from '../data/dbt_total_fmtd.json';
 import agri_gdp from '../data/agri_gdp_fmtd.json';
 import agri_fert from '../data/agri_fert_fmtd.json';
+// import agri_credit from '../data/agri_credit_fmtd.json';
 import agri_fert_prod from '../data/agri_fert_prod_fmtd.json';
 import gdp_growth from '../data/gdp_growth_fmtd.json';
 import countries from '../data/countries.json';
@@ -39,6 +40,7 @@ function MyBookings() {
         dbt_total,
         agri_gdp,
         agri_fert,
+        // agri_credit,
         agri_fert_prod
     };
     const pgmapping = {
@@ -51,6 +53,7 @@ function MyBookings() {
         'agri-gdp': 'agri_gdp', // NV.AGR.TOTL.ZS
         'agri-fertilizers': 'agri_fert', // AG.CON.FERT.ZS
         'agri-fertilizers-prod': 'agri_fert_prod', // AG.CON.FERT.PT.ZS
+        // 'agri-credit': 'agri_credit'
     };
 
     const reset = () => {

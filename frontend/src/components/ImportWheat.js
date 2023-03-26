@@ -6,7 +6,7 @@ import wheat_data from '../data/wheat_arabia_fmtd.json';
 import RangeSlider from 'rsuite/RangeSlider';
 import { Chart } from "react-google-charts";
 
-function CropMangos() {
+function ImportWheat() {
 
     const [data, setData] = useState([]);
     const [range, setRange] = useState([1960, 2021]);
@@ -80,4 +80,4 @@ function CropMangos() {
     )
 }
 
-export default CropMangos;
+export default ImportWheat;

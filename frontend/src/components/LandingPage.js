@@ -18,6 +18,7 @@ import YieldMangos from './YieldMangos';
 import CropMangos from "./CropMangos";
 import TimeSeries from './TimeSeries';
 import ImportWheat from './ImportWheat';
+import AgriCredit from './AgriCredit';
 import { Row, Col, Form } from 'react-bootstrap';
 import { TbDrone } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
@@ -50,7 +51,7 @@ function LandingPage() {
         'm2': 'macro-fdi-inflow',
         'm3': 'macro-fdi-outflow',
         'a1': 'agri-gdp',
-        'a2': 'agri-credit',
+        'a2': 'bar/agri-credit',
         'a3': 'agri-fertilizers',
         'a4': 'agri-fertilizers-prod',
         'd1': 'debt-reserves',
@@ -159,6 +160,7 @@ function LandingPage() {
                             <Route path="yield/:pageID" element={<YieldWalnuts />} />
                             <Route path="yieldm/:pageID" element={<YieldMangos />} />
                             <Route path="crop/:pageID" element={<CropMangos />} />
+                            <Route path="bar/agri-credit" element={<AgriCredit />} />
                             <Route path="imports" element={<ImportWheat />} />
                             <Route path=":pageID" element={<MyBookings />} />
                         </Route>
