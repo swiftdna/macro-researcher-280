@@ -48,8 +48,8 @@ function MyBookings() {
         'macro-fdi-inflow' : 'fdi_netinflow', //BX.KLT.DINV.WD.GD.ZS
         'macro-gdp': 'gdp_growth', // NY.GDP.MKTP.KD.ZG
         'debt-reserves': 'dbt_rsv', //FI.RES.TOTL.DT.ZS
-        'debt-gni': 'debt_gni', // DT.TDS.DECT.GN.ZS
-        'debt-total-debt': 'debt_total', // DT.TDS.DECT.GN.ZS
+        'debt-gni': 'dbt_gni', // DT.TDS.DECT.GN.ZS
+        'debt-total-debt': 'dbt_total', // DT.TDS.DECT.GN.ZS
         'agri-gdp': 'agri_gdp', // NV.AGR.TOTL.ZS
         'agri-fertilizers': 'agri_fert', // AG.CON.FERT.ZS
         'agri-fertilizers-prod': 'agri_fert_prod', // AG.CON.FERT.PT.ZS
