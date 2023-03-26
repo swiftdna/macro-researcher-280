@@ -31,6 +31,8 @@ function TimeSeries() {
 
     useEffect(() => {
         reset();
+        console.log('setting')
+        setData(master_data[pageID])
     }, [pageID]);
 
     useEffect(() => {
@@ -47,12 +49,12 @@ function TimeSeries() {
         }
         tmp_data = master_data[src_name];
         if (start && end) {
-            filtered_data = tmp_data.filter(td => {
+            filtered_data = tmp_data.filter((td, indx) => {
                 const [yr] = td;
-                if (typeof yr === 'string') {
+                if (indx === 0) {
                     return true;
                 }
-                if (typeof yr === 'number' && (yr >= start && yr <= end)) {
+                if (typeof yr !== 'DateTime' && (new Date(yr).getDate() >= start+6 && new Date(yr).getDate() <= end+6)) {
                     return true;
                 }
                 return false;
@@ -75,15 +77,15 @@ function TimeSeries() {
                 <Col md="3">
                 </Col>
                 <Col md="6">
-                    <RangeSlider min={1960} max={2021} value={range} defaultValue={[1960, 2021]} onChange={sliderChanged} style={{marginTop: '15px'}} />
+                    <RangeSlider min={1} max={3} value={range} defaultValue={[1, 3]} onChange={sliderChanged} style={{marginTop: '15px'}} />
                 </Col>
                 <Col md="3">
                 </Col>
             </Row>
             
-            {range.length ? <p style={{marginTop: '50px', marginBottom: '50px'}}>Showing {pageIdentifier} data. Year range - {range.join(' to ')}</p> : <p>Welcome to {pageID}. Please select a year range.</p>}
+            {range.length ? <p style={{marginTop: '50px', marginBottom: '50px'}}>Showing {pageIdentifier} data. Day range - {range.join(' to ')}</p> : <p>Welcome to {pageID}. Please select a year range.</p>}
             {range.length ? <Chart
-              chartType="Line"
+              chartType="LineChart"
               data={data}
               width="100%"
               height="400px"

@@ -26,8 +26,7 @@ function Node({ node, style, dragHandle }) {
   /* This node instance can do many things. See the API reference. */
   return (
     <div style={{...style, textAlign: 'left'}} ref={dragHandle} onClick={() => node.toggle()}>
-      {node.isLeaf ? "- " : (node.isOpen ? "▼ " : "➤ ") }
-      {node.data.name}
+      <span style={{backgroundColor: node.isSelected ? '#DEDEDE' : '', padding: '6px 12px', borderRadius: '5px'}}>{node.isLeaf ? "- " : (node.isOpen ? "▼ " : "➤ ") }{node.data.name}</span>
     </div>
   );
 }
@@ -117,7 +116,7 @@ function LandingPage() {
     ];
 
     const clicked =  (e) => {
-        console.log('click', e);
+        console.log('click', e.target.value);
     }
 
     const onMove = ({ dragIds, parentId, index }) => {
