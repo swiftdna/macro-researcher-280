@@ -12,6 +12,7 @@ import dbt_total from '../data/dbt_total_fmtd.json';
 import agri_gdp from '../data/agri_gdp_fmtd.json';
 import agri_fert from '../data/agri_fert_fmtd.json';
 import agri_fert_prod from '../data/agri_fert_prod_fmtd.json';
+import gdp_growth from '../data/gdp_growth_fmtd.json';
 import countries from '../data/countries.json';
 import RangeSlider from 'rsuite/RangeSlider';
 import 'rsuite/dist/rsuite.min.css'; // or 'rsuite/dist/rsuite.min.css'
@@ -26,6 +27,7 @@ function MyBookings() {
     const [range, setRange] = useState([1960, 2021]);
     let { pageID } = useParams();
     const master_data = {
+        gdp_growth,
         dbt_rsv,
         dbt_gni,
         dbt_total,
@@ -34,6 +36,7 @@ function MyBookings() {
         agri_fert_prod
     };
     const pgmapping = {
+        'macro-gdp': 'gdp_growth', // NY.GDP.MKTP.KD.ZG
         'debt-reserves': 'dbt_rsv', //FI.RES.TOTL.DT.ZS
         'debt-gni': 'debt_gni', // DT.TDS.DECT.GN.ZS
         'debt-total-debt': 'debt_total', // DT.TDS.DECT.GN.ZS
